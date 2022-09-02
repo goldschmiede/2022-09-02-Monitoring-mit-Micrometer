@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.anderscore.presentation</groupId>
+        <artifactId>revealjs-pom</artifactId>
+        <version>4.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>com.anderscore.presentation</groupId>
+    <artifactId>quarkus-training</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <presentation.title>Monitoring mit Micrometer</presentation.title>
+        <!-- FIXME Sprecher ändern (angezeigt auf den Folien)-->
+		    <presentation.speaker>André Lambertz</presentation.speaker>
+		    <!-- FIXME Sprecher (Kurzform) hinzufügen, getrennt durch Komma z.B. vnachname -->
+		    <presentation.speaker.short>alambertz</presentation.speaker.short>
+        <presentation.speaker.jobtitle>Softwareentwickler</presentation.speaker.jobtitle>
+        <presentation.date>02.09.2022</presentation.date>
+        <!--values: gfu,individual Defines which schedule will be used for the training -->
+        <presentation.promoter>Goldschmiede</presentation.promoter>
+
+    </properties>
+
+    <repositories>
+  		<repository>
+  			<id>revealJS-presentation</id>
+  			<url>https://gitlab.ads.anderscore.com/api/v4/projects/6/packages/maven</url>
+  			<releases>
+  				<updatePolicy>always</updatePolicy>
+  			</releases>
+  			<snapshots>
+  				<updatePolicy>always</updatePolicy>
+  			</snapshots>
+  		</repository>
+  	</repositories>
+
+    <dependencies>
+      <dependency>
+  			<groupId>com.anderscore.presentation</groupId>
+  			<artifactId>revealjs-pom</artifactId>
+  			<version>4.0-SNAPSHOT</version>
+  			<type>pom</type>
+  		</dependency>
+    </dependencies>
+
+  	<pluginRepositories>
+  		<pluginRepository>
+  			<id>revealjs-server</id>
+  			<url>https://gitlab.ads.anderscore.com/api/v4/projects/62/packages/maven</url>
+  		</pluginRepository>
+  	</pluginRepositories>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.anderscore.tools</groupId>
+                <artifactId>revealjs-server-maven-plugin</artifactId>
+                <configuration>
+                    <attributes>
+                        <demo>${basedir}/../demo</demo>
+                    </attributes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.asciidoctor</groupId>
+                <artifactId>asciidoctor-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>generate-slides</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>process-asciidoc</goal>
+                        </goals>
+                        <configuration>
+                            <attributes>
+                                <demo>${basedir}/../demo</demo>
+                            </attributes>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+
+
+    </build>
+
+    <profiles>
+        <profile>
+            <id>pdf-custom</id>
+            <activation>
+                <property>
+                    <name>pdf-custom</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.asciidoctor</groupId>
+                        <artifactId>asciidoctor-maven-plugin</artifactId>
+                        <version>${asciidoctor-maven-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>generate-pdf-doc</id>
+                                <phase>generate-resources</phase>
+                                <goals>
+                                    <goal>process-asciidoc</goal>
+                                </goals>
+                                <configuration>
+                                    <backend>pdf</backend>
+                                    <sourceHighlighter>coderay</sourceHighlighter>
+                                    <attributes>
+                                        <icons>font</icons>
+                                        <basedir>${basedir}</basedir>
+                                        <demo>${basedir}/../demo</demo>
+                                        <imagesdir>images</imagesdir>
+                                        <sourcedir>${basedir}/src/main/java</sourcedir>
+                                        <resourcedir>${basedir}/src/main/resources</resourcedir>
+
+                                        <revealjs_title>${presentation.title}</revealjs_title>
+                                        <revealjs_speaker>${presentation.speaker}</revealjs_speaker>
+                                        <revealjs_company>${presentation.company}</revealjs_company>
+                                        <project-version>${project.version}</project-version>
+                                        <plantuml-config>
+                                            ${project.build.directory}/theme/template/source/plantuml-config.txt
+                                        </plantuml-config>
+
+                                        <pdf-stylesdir>${project.build.directory}/theme/themes</pdf-stylesdir>
+                                        <pdf-fontsdir>${project.build.directory}/theme/fonts</pdf-fontsdir>
+                                        <pdf-style>anderScore</pdf-style>
+                                        <idprefix/>
+                                        <idseparator>-</idseparator>
+                                        <allow-uri-read>true</allow-uri-read>
+                                    </attributes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+</project>

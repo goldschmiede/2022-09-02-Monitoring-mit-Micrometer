@@ -1,0 +1,19 @@
+:imagesdir: images
+
+include::{basedir}/generated-src/speaker.adoc[]
+include::{basedir}/generated-src/anderScore1Slide.adoc[]
+
+[.columns]
+== Vorstellung
+
+--
+[.heading]
+Jetzt sind Sie dran!
+
+* Name
+* Vorwissen
+* Erwartungen
+* Themenwünsche
+--
+
+image::anybody.jpg[float=right, pdfwidth=4cm]

@@ -1,0 +1,157 @@
+:chapter: Einführung in Quarkus
+:speaker: {revealjs_speaker}
+:jobtitle: {revealjs_speaker_jobtitle}
+:date: {revealjs_date}
+:promoter: {revealjs_promoter}
+:imagesdir: images
+:space:
+
+[.center.text-center]
+== Monitoring mit Micrometer
+
+[.margin-bottom-default]
+
+[.heading]
+Willkommen zur Goldschmiede
+
+image::micrometer-prometheus-grafana.png[width=1000]
+
+[.heading]
+Monitoring mit Micrometer (+ Prometheus + Grafana)
+
+
+include::{basedir}/generated-src/speaker.adoc[]
+include::{basedir}/generated-src/anderScore1Slide.adoc[]
+
+[.columns]
+== Vorstellung
+
+--
+[.heading]
+Jetzt sind Sie dran!
+
+* Name
+* Vorwissen
+* Erwartungen
+* Themenwünsche
+--
+
+image::anybody.jpg[float=right, pdfwidth=4cm]
+
+
+== Was ist "Monitoring"?
+
+**Wikipedia:** Monitoring ist die Überwachung von Vorgängen. Es ist ein Überbegriff für alle Arten von systematischen Erfassungen (Protokollierungen), Messungen oder Beobachtungen eines Vorgangs oder Prozesses mittels technischer Hilfsmittel oder anderer Beobachtungssysteme.
+
+* Logging - Events aufzeichnen
+* Tracing - Events und Subevents in kausaler Ordnung aufzeichen
+* **Metrics** - Daten aus Messereignissen
+
+
+== Metrics
+
+* Zahlenwert + Zeitpunkt der Messung
+* Trends erkennbar
+* z.B: "Wie oft tritt genau der Fehler xy auf"
+
+**->** "Alarm schlagen" bei gewisser Überschreitung
+
+== Klassisches Metrics-Monitoring
+
+
+
+== Micrometer
+
+image::micrometer.png[height=400]
+
+https://micrometer.io/
+
+* Bietet verschiedenste Metriken
+** Gauges
+** Counters
+** Timers
+** Distribution Summaries
+
+[.columns]
+== Gauges
+
+--
+* Aktuelle Messgröße
+* Anteil in % (rel. zu Obergrenze)
+* Beispiele:
+** Elemente in einer Liste/Queue/Stack
+** CPU Last
+** Verwendeter Speicher
+** Eingeloggte User
+** Aktive Threads
+--
+
+image::gauge.jpg[height=500]
+
+
+[.columns]
+== Counter
+
+--
+image::counter.jpeg[height=300]
+--
+
+* Aufzählungen, Anzahl
+* Theoretisch Grenzenlos
+* Beispiele:
+** Aufrufe eines Services, "Clicks"
+** Erfüllte Tasks
+** Errors
+
+
+[.columns]
+== Distribution Summaries
+
+--
+* Verteilungsgröße
+* Histogramme und Pie-charts
+* Beispiele:
+** Anteiliger Nutzen von Services
+** Größe von Payloads
+--
+
+image::piechart.png[height=500]
+
+
+[.columns]
+== Timers
+
+--
+image:timer.jpg[height=400]
+--
+
+* "Counter für Zeitmessungen"
+* Beispiele:
+** Durchschnittliche Anwortzeit je Service
+** Serverinterne Bearbeitungszeit
+
+
+== Prometheus
+
+image::prometheus.png[height=300]
+
+https://prometheus.io/
+
+* Sammelt und speichert Metriken als Zeitreihendaten
+* Grundlegende Visualisierung möglich
+* Versenden von Alerts möglich
+
+**Hier: Speichern von Metriken aus Micrometer**
+
+== Darstellung mit Grafana
+
+image::grafana.png[height=300]
+
+https://grafana.com/
+
+* Sammeln und speichern von Metriken
+* Senden von Alerts möglich
+* Fokus auf Visualisierung
+* Zum rumspielen ;) https://play.grafana.org/
+
+**Hier: Visualisierung der in Prometheus gespeicherten Metriken**

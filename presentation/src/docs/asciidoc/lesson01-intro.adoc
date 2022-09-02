@@ -1,0 +1,6 @@
+[state=no-title-footer]
+== Was ist "Monitoring"?
+
+Wikipedia: Monitoring ist die Überwachung von Vorgängen. Es ist ein Überbegriff für alle Arten von systematischen Erfassungen (Protokollierungen), Messungen oder Beobachtungen eines Vorgangs oder Prozesses mittels technischer Hilfsmittel oder anderer Beobachtungssysteme.
+
+== Klassisches Monitoring
