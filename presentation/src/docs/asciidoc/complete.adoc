@@ -23,38 +23,43 @@ Monitoring mit Micrometer (+ Prometheus + Grafana)
 include::{basedir}/generated-src/speaker.adoc[]
 include::{basedir}/generated-src/anderScore1Slide.adoc[]
 
-[.columns]
-== Vorstellung
-
---
-[.heading]
-Jetzt sind Sie dran!
-
-* Name
-* Vorwissen
-* Erwartungen
-* Themenwünsche
---
-
-image::anybody.jpg[float=right, pdfwidth=4cm]
-
 
 == Was ist "Monitoring"?
 
 **Wikipedia:** Monitoring ist die Überwachung von Vorgängen. Es ist ein Überbegriff für alle Arten von systematischen Erfassungen (Protokollierungen), Messungen oder Beobachtungen eines Vorgangs oder Prozesses mittels technischer Hilfsmittel oder anderer Beobachtungssysteme.
 
+image::white.png[height=100]
+
 * Logging - Events aufzeichnen
-* Tracing - Events und Subevents in kausaler Ordnung aufzeichen
+* Tracing - Events und Subevents in kausaler Ordnung aufzeichnen
 * **Metrics** - Daten aus Messereignissen
 
+image::question.jpg[height=350]
 
+[.columns]
 == Metrics
 
+--
 * Zahlenwert + Zeitpunkt der Messung
+** z.B: "2022-09-02 18:00:00 - 3 Bestellungen offen"
 * Trends erkennbar
-* z.B: "Wie oft tritt genau der Fehler xy auf"
+** z.B: "Wie oft trat genau der Fehler xy bisher auf"
+** z.B: "Eingeloggte User zum Zeitpunkt xz"
+--
 
-**->** "Alarm schlagen" bei gewisser Überschreitung
+image::metrics.png[height=400]
+
+
+[.columns]
+== Wozu überhaupt Monitoring zu Metrics?
+
+--
+image::alerting.png[height=400]
+--
+
+* Messwerte für sinnvolles Sizing sammeln
+* Alarm schlagen bei Überschreitung von Schwellenwerten
+
 
 == Klassisches Metrics-Monitoring
 
@@ -66,7 +71,7 @@ image::micrometer.png[height=400]
 
 https://micrometer.io/
 
-* Bietet verschiedenste Metriken
+* Bietet verschiedenste Metriken für Java-Applikationen
 ** Gauges
 ** Counters
 ** Timers

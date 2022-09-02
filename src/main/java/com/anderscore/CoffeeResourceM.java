@@ -1,6 +1,5 @@
 package com.anderscore;
 
-import io.micrometer.core.instrument.DistributionSummary;
 import io.micrometer.core.instrument.MeterRegistry;
 import io.micrometer.core.instrument.Tags;
 import io.micrometer.core.instrument.Timer;
@@ -13,14 +12,12 @@ import java.util.LinkedList;
 public class CoffeeResourceM {
 
     private final MeterRegistry registry;
-    // private DistributionSummary summary;
     LinkedList<Long> coffeeQueue = new LinkedList<>();
 
     CoffeeResourceM(MeterRegistry registry) {
         this.registry = registry;
         registry.counter("total.coffee.ordered");
         registry.gaugeCollectionSize("coffee.queue.size", Tags.empty(), coffeeQueue);
-        // this.summary = registry.find("coffeeQueue").name("coffee.distribution.summary").summary();
     }
 
     @GET
