@@ -14,14 +14,14 @@
 [.heading]
 Willkommen zur Goldschmiede
 
-image::micrometer-prometheus-grafana.png[width=1000]
+image::micrometer-prometheus-grafana.png[width=800]
 
 [.heading]
 Monitoring mit Micrometer (+ Prometheus + Grafana)
 
 
-include::{basedir}/generated-src/speaker.adoc[]
 include::{basedir}/generated-src/anderScore1Slide.adoc[]
+include::{basedir}/generated-src/speaker.adoc[]
 
 
 == Was ist "Monitoring"?
@@ -154,9 +154,23 @@ image::grafana.png[height=300]
 
 https://grafana.com/
 
-* Sammeln und speichern von Metriken
+* Sammeln von Metriken aus verschiedensten Datenquellen
 * Senden von Alerts möglich
 * Fokus auf Visualisierung
 * Zum rumspielen ;) https://play.grafana.org/
 
 **Hier: Visualisierung der in Prometheus gespeicherten Metriken**
+
+
+[.center.text-center]
+== Monitoring mit Micrometer
+
+[.margin-bottom-default]
+
+[.heading]
+Goldschmiede
+
+image::micrometer-prometheus-grafana.png[width=800]
+
+[.heading]
+Monitoring mit Micrometer (+ Prometheus + Grafana)
